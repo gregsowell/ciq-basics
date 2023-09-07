@@ -1,0 +1,19 @@
+---
+- name: Write file on localhost
+  hosts: localhost
+  gather_facts: false
+  
+  tasks:
+  - name: Write file test.txt to the temp folder
+    ansible.builtin.lineinfile:
+      path: /tmp/test.txt
+      line: "just a quick and simple test :)"
+      create: yes
+      
+  - name: Grab contents of file
+    ansible.builtin.shell: cat /tmp/test.txt
+    register: file_contents
+
+  - name: Display file_contents 
+    ansible.builtin.debug:
+      var: file_contents.stdout_lines
