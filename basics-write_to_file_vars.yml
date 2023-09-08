@@ -1,5 +1,5 @@
 ---
-- name: Basics write file
+- name: Basics write file with vars
   hosts: basics-host
   gather_facts: false
   vars:
