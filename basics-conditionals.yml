@@ -4,7 +4,7 @@
   #gather_facts: false
   tasks:
   - name: Perform an action when distribution is Rocky
-    when: ansible_facts.distribution == "Rocky" and ansible_facts.date_time.hour > 12
+    when: ansible_facts.distribution == "Rocky"
     ansible.builtin.debug:
       msg: "Obviously, {{ ansible_facts.distribution }} is the best OS"
 
@@ -14,11 +14,11 @@
       msg: "Unfortunately {{ ansible_facts.distribution }} isn't Rocky, but we can still be friends ;)"
 
   - name: Perform an action when it's afternoon
-    when: ansible_facts.system == "Linux" and ansible_facts.date_time.hour >= 12
+    when: ansible_facts.system == "Linux" and ansible_facts.date_time.hour | int >= 12
     ansible.builtin.debug:
       msg: "It's a good afternoon for Linux"
 
   - name: Perform an action when it's morning
-    when: ansible_facts.system == "Linux" and ansible_facts.date_time.hour < 12
+    when: ansible_facts.system == "Linux" and ansible_facts.date_time.hour | int < 12
     ansible.builtin.debug:
       msg: "It's a good afternoon for Linux"
