@@ -1,5 +1,5 @@
 ---
-- name: Write file on localhost
+- name: Basics write file
   hosts: basics-host
   gather_facts: false
   vars:
