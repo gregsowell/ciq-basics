@@ -1,9 +1,14 @@
 ---
-- name: Conditional
+- name: Conditional testing for distribution
   hosts: basics-host
   #gather_facts: false
   tasks:
-  - name: Write file test.txt to the temp folder
+  - name: Perform an action when distribution is Rocky
     when: ansible_facts.distribution == "Rocky"
     ansible.builtin.debug:
-      var: ansible_facts.distribution
+      msg: "Obviously, {{ ansible_facts.distribution }} is the best OS"
+
+  - name: Perform an action when distribution is anything else
+    when: ansible_facts.distribution != "Rocky"
+    ansible.builtin.debug:
+      msg: "Unfortunately {{ ansible_facts.distribution }} isn't Rocky, but we can still be friends ;)"
