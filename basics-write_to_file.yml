@@ -1,6 +1,6 @@
 ---
 - name: Write file on localhost
-  hosts: localhost
+  hosts: basics-host
   gather_facts: false
   
   tasks:
