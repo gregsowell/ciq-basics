@@ -13,12 +13,14 @@
     ansible.builtin.debug:
       msg: "Unfortunately {{ ansible_facts.distribution }} isn't Rocky, but we can still be friends ;)"
 
-  - name: Perform an action when it's afternoon
-    when: ansible_facts.system == "Linux" and ansible_facts.date_time.hour | int >= 12
-    ansible.builtin.debug:
-      msg: "It's a good afternoon for Linux"
+  - name: Block for Linux check
+    when: ansible_facts.system == "Linux"
+    - name: Perform an action when it's afternoon
+      when:  ansible_facts.date_time.hour | int >= 12
+      ansible.builtin.debug:
+        msg: "It's a good afternoon for Linux"
 
-  - name: Perform an action when it's morning
-    when: ansible_facts.system == "Linux" and ansible_facts.date_time.hour | int < 12
-    ansible.builtin.debug:
-      msg: "It's a good afternoon for Linux"
+    - name: Perform an action when it's morning
+      when: and ansible_facts.date_time.hour | int < 12
+      ansible.builtin.debug:
+        msg: "It's a good afternoon for Linux"
