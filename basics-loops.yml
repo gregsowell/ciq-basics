@@ -1,0 +1,20 @@
+---
+- name: Add Users
+  hosts: basics-host
+  gather_facts: false
+
+  tasks:
+  - name: Add a user1
+    ansible.builtin.user:
+      name: user1
+      state: present
+
+  - name: Add a user2
+    ansible.builtin.user:
+      name: user2
+      state: present
+
+  - name: Add a user3
+    ansible.builtin.user3:
+      name: user3
+      state: present
