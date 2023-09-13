@@ -1,0 +1,16 @@
+---
+- name: Install Web Server
+  hosts: basics-host
+
+  tasks:
+  - name: Install Apache
+    ansible.builtin.dnf:
+      name: httpd
+      state: latest
+    register: httpd_install
+      
+  - name: Restart httpd
+    ansible.builtin.service:
+      name: httpd
+      state=restarted
+    when: httpd_install.changed
