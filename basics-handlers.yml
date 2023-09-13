@@ -8,22 +8,18 @@
       name: httpd
       state: latest
     register: httpd_install
+    notify: Restart httpd
       
-  - name: Restart httpd
-    ansible.builtin.service:
-      name: httpd
-      state=restarted
-    when: httpd_install.changed
-
   - name: Apache alternate port
     lineinfile: dest=/etc/apache2/ports.conf 
       regexp="^Listen " 
       line="Listen {{ http_port }}" 
       state=present
     register: alt_port
+    notify: Restart httpd
       
+  handlers:
   - name: Restart httpd
     ansible.builtin.service:
       name: httpd
-      state: restarted
-    when: alt_port.changed
+      state=restarted
