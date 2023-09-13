@@ -24,4 +24,4 @@
     - name: Perform an action when it's morning
       when: ansible_facts.date_time.hour | int < 12
       ansible.builtin.debug:
-        msg: "It's a good afternoon for Linux"
+        msg: "It's a good morning for Linux"
