@@ -13,10 +13,12 @@
     notify: Restart httpd
       
   - name: Apache alternate port
-    lineinfile: dest=/etc/apache2/ports.conf 
-      regexp="^Listen " 
-      line="Listen {{ http_port }}" 
-      state=present
+    lineinfile: 
+      dest: /etc/apache2/ports.conf 
+      regexp: "^Listen " 
+      line: "Listen {{ http_port }}" 
+      state: present
+      create: yes
     register: alt_port
     notify: Restart httpd
       
