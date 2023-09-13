@@ -1,6 +1,8 @@
 ---
 - name: Install Web Server
   hosts: basics-host
+  vars: 
+    http_port: 80
 
   tasks:
   - name: Install Apache
