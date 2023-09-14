@@ -2,13 +2,15 @@
 - name: Add Users
   hosts: basics-host
   gather_facts: false
+  vars:
+    admin_users:
+      - user1
+      - user2
+      - user3
 
   tasks:
   - name: Add users
     ansible.builtin.user:
       name: "{{ item }}"
       state: present
-    loop: 
-      - user1
-      - user2
-      - user3
+    loop: "{{ admin_users }}"
