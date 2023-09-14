@@ -15,6 +15,6 @@
       state: present
 
   - name: Add a user3
-    ansible.builtin.user3:
+    ansible.builtin.user:
       name: user3
       state: present
