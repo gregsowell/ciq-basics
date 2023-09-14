@@ -12,6 +12,6 @@
   - name: Write file test.txt to the temp folder
     ansible.builtin.template:
       dest: /tmp/food.txt
-      src: templates/food.txt.j2
+      src: food.txt.j2
       
 
