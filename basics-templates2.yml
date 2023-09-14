@@ -1,0 +1,17 @@
+---
+- name: Write file on localhost
+  hosts: basics-host
+  gather_facts: false
+  vars:
+    fav_foods: 
+      - tacos
+      - burgers
+      - donuts
+
+  tasks:
+  - name: Write file test.txt to the temp folder
+    ansible.builtin.template:
+      dest: /tmp/food.txt
+      src: templates/food.txt.j2
+      
+
