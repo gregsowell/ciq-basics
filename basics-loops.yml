@@ -6,15 +6,9 @@
   tasks:
   - name: Add a user1
     ansible.builtin.user:
-      name: user1
+      name: "{{ item }}"
       state: present
-
-  - name: Add a user2
-    ansible.builtin.user:
-      name: user2
-      state: present
-
-  - name: Add a user3
-    ansible.builtin.user:
-      name: user3
-      state: present
+    loop: 
+      - user1
+      - user2
+      - user3
