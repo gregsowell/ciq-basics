@@ -1,0 +1,6 @@
+---
+- name: Add users
+  ansible.builtin.user:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ admin_users }}"
