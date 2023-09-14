@@ -1,0 +1,19 @@
+---
+- name: Conditional testing for distribution
+  hosts: basics-host
+  #gather_facts: false
+
+  - name: Write template file
+    ansible.builtin.template:
+      src: test_file.txt.j2
+      dest: /tmp/test_file.txt
+    vars:
+      purpose: Ansible Testing
+
+  - name: Grab contents of file
+    ansible.builtin.shell: cat /tmp/test_file.txt
+    register: file_contents
+
+  - name: Display file_contents 
+    ansible.builtin.debug:
+      var: file_contents.stdout_lines
