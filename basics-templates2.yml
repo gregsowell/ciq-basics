@@ -14,4 +14,10 @@
       dest: /tmp/food.txt
       src: food.txt.j2
       
+  - name: Grab contents of file
+    ansible.builtin.shell: cat /tmp/food.txt
+    register: file_contents
 
+  - name: Display file_contents 
+    ansible.builtin.debug:
+      var: file_contents.stdout_lines
