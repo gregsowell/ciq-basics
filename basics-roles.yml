@@ -1,0 +1,9 @@
+---
+- name: Add Users
+  hosts: basics-host
+  gather_facts: false
+
+  tasks:
+  - name: Add users role
+    include_role:
+      name: user-role
