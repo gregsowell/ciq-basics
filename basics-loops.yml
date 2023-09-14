@@ -4,7 +4,7 @@
   gather_facts: false
 
   tasks:
-  - name: Add a user1
+  - name: Add users
     ansible.builtin.user:
       name: "{{ item }}"
       state: present
